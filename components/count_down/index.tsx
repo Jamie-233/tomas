@@ -26,7 +26,7 @@ const CountDown = (props: IProps) => {
     };
   }, [onEnd, time]);
 
-  return <div className={styles.count_down}>{count}</div>;
+  return <div className={styles.count_down}>{count}s</div>;
 };
 
 export default CountDown;

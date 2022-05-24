@@ -1,4 +1,6 @@
 import { ChangeEvent, useState } from 'react';
+import { message } from 'antd';
+import { sendVerifyCode } from 'config/api';
 import styles from './index.module.scss';
 import CountDown from 'components/count_down';
 
@@ -20,7 +22,15 @@ const Login = (props: IProps) => {
     onClose();
   };
 
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    if (!form.phone) {
+      message.warning('Place Input Phone Number');
+      return;
+    }
+
+    const res = await sendVerifyCode({ to: 1, templateId: 1 });
+    console.log('res', res);
+  };
 
   const handleGetVerifyCode = () => {
     setIsShowVerifyCode(true);
